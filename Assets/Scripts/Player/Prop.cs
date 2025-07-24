@@ -11,11 +11,13 @@ public class Prop : Role
 
     public override void FirstAction()
     {
+        //Logic for swapping prop in one direction goes here
         Debug.Log("Prop FirstAction");
     }
 
     public override void SecondAction()
     {
+        //Logic for swapping prop in the other direction goes here
         Debug.Log("Prop SecondAction");
     }
 

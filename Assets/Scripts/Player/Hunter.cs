@@ -11,16 +11,19 @@ public class Hunter : Role
     }
     public override void FirstAction()
     {
+        // Logic for swinning weapon goes here
          Debug.Log("Hunter FirstAction");
     }
 
     public override void SecondAction()
-    {
+    {        
         Debug.Log("Hunter SecondAction");
+        return;
     }
 
     public override void ThirdAction()
     {
         Debug.Log("Hunter ThirdAction");
+        return;
     }
 }
