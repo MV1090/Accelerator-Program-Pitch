@@ -1,16 +1,26 @@
 using UnityEngine;
+public class Prop : Role
+{     
+    CameraController cameraController;
 
-public class Prop : Player
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        
+        cameraController = Camera.main.GetComponent<CameraController>();
+        cameraController.SetCameraMode(CameraController.CameraMode.FirstPerson);
     }
 
-    // Update is called once per frame
-    public override void Update()
+    public override void FirstAction()
     {
-        
+        Debug.Log("Prop FirstAction");
+    }
+
+    public override void SecondAction()
+    {
+        Debug.Log("Prop SecondAction");
+    }
+
+    public override void ThirdAction()
+    {       
+       cameraController.ToggleCameraMode();
     }
 }

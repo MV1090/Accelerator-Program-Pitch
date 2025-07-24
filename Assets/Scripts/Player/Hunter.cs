@@ -1,16 +1,26 @@
+
 using UnityEngine;
 
-public class Hunter : Player
+public class Hunter : Role
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+     CameraController cameraController;
+    void Awake()
     {
-        
+        cameraController = Camera.main.GetComponent<CameraController>();
+        cameraController.SetCameraMode(CameraController.CameraMode.FirstPerson);
+    }
+    public override void FirstAction()
+    {
+         Debug.Log("Hunter FirstAction");
     }
 
-    // Update is called once per frame
-    public override void Update()
+    public override void SecondAction()
     {
-        
+        Debug.Log("Hunter SecondAction");
+    }
+
+    public override void ThirdAction()
+    {
+        Debug.Log("Hunter ThirdAction");
     }
 }
