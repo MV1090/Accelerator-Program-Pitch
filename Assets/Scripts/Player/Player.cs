@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Seeker : MonoBehaviour
+public class Player : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -9,8 +9,11 @@ public class Seeker : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
-        
+        if(GetKeyDown.W)
+        {
+            Debug.Log("W");
+        }
     }
 }
