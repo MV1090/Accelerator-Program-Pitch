@@ -7,16 +7,15 @@ public class CameraController : MonoBehaviour
 
     public Transform firstPersonTarget;
     public Transform thirdPersonTarget;
-    public float mouseSensitivity = 100f;
+    public float mouseSensitivity = 50f;
     public float thirdPersonSmooth = 5f;
     public Transform playerBody;
 
     float xRotation = 0f;
     float orbitYaw = 0f;
-    float orbitPitch = 20f; // Default pitch for third person
+    float orbitPitch = 20f; 
     public float orbitDistance = 4f;
-
-    // Reference to the Player script to check movement
+    
     public Player playerScript;
 
     void Start()
@@ -64,8 +63,7 @@ public class CameraController : MonoBehaviour
         else if (currentMode == CameraMode.ThirdPerson)
         {
             bool isMoving = playerScript != null && playerScript.moveInput.sqrMagnitude > 0.05f;
-
-            // Always update pitch and yaw with mouse input
+            
             orbitYaw += mouseX;
             orbitPitch -= mouseY;
             orbitPitch = Mathf.Clamp(orbitPitch, 5f, 80f);
