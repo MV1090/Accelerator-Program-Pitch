@@ -3,21 +3,37 @@ using UnityEngine;
 
 public class Hunter : Role
 {
-    class weapon 
-    {
+    //Animator animator;
+    CameraController cameraController;           
+    private GameObject weaponInstance;
 
-    }
-
-    CameraController cameraController;
+    Player player;
     void Awake()
     {
         cameraController = Camera.main.GetComponent<CameraController>();
-        cameraController.SetCameraMode(CameraController.CameraMode.FirstPerson);
+        cameraController.SetCameraMode(CameraController.CameraMode.FirstPerson); 
+        player = GetComponent<Player>();
+        SpawnWeapon();
+    }
+     public void SpawnWeapon()
+    {
+        if (player.weaponInstance != null && player.weaponSocket != null)
+        {
+            weaponInstance = Instantiate(player.weaponInstance, player.weaponSocket.position, player.weaponSocket.rotation, player.weaponSocket);
+        }
+        else
+        {
+            Debug.LogError("WeaponPrefab or WeaponSocket not set on Hunter!");
+        }
     }
     public override void FirstAction()
     {
-        // Logic for swinning weapon goes here
-         Debug.Log("Hunter FirstAction");
+        //temp placeholder for testing. Remove this later. when animation is in.
+        DetectHit();
+    
+        //animator.SetTrigger("Swing");
+
+        Debug.Log("Hunter FirstAction");
     }
 
     public override void SecondAction()
@@ -30,5 +46,10 @@ public class Hunter : Role
     {
         Debug.Log("Hunter ThirdAction");
         return;
+    }
+
+    public void DetectHit()
+    {
+        weaponInstance.GetComponent<Weapon>().DetectHit();
     }
 }

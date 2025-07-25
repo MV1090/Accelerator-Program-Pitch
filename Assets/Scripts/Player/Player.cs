@@ -6,8 +6,9 @@ public class Player : MonoBehaviour
     public Vector2 moveInput;
     public float jumpForce = 5f;
     public float speed = 5f;
-    private Rigidbody rb;
-
+    private Rigidbody rb;    
+    public Transform weaponSocket;
+    public GameObject weaponInstance;
     public void SetRole<T>() where T : Role
     {
         // Remove old role if it exists
@@ -21,7 +22,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        SetRole<Prop>();
+        SetRole<Hunter>();
         rb = GetComponent<Rigidbody>();
     }    
 

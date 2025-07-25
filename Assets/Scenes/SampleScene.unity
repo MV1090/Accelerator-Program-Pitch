@@ -365,6 +365,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 511640673}
+  - {fileID: 349735135}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &145833907
@@ -987,8 +988,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 349735134}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.224162, y: 6.514455, z: 6.1441164}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.224162, y: 6.6144547, z: 6.1441164}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1009,7 +1010,7 @@ Transform:
   - {fileID: 1322357059}
   - {fileID: 145833908}
   - {fileID: 771726501}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 99125086}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &392379652
 GameObject:
@@ -1774,7 +1775,7 @@ GameObject:
   - component: {fileID: 955636614}
   - component: {fileID: 955636618}
   m_Layer: 0
-  m_Name: Hunter
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1789,13 +1790,14 @@ Transform:
   m_GameObject: {fileID: 955636612}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.62, y: 1.35, z: 4.66}
+  m_LocalPosition: {x: -13.62, y: 1.35, z: -7.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1877733082}
   - {fileID: 1256367545}
   - {fileID: 330585546}
+  - {fileID: 1411771854}
   m_Father: {fileID: 392379653}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &955636614
@@ -1814,6 +1816,8 @@ MonoBehaviour:
   moveInput: {x: 0, y: 0}
   jumpForce: 5
   speed: 5
+  weaponSocket: {fileID: 1411771854}
+  weaponInstance: {fileID: 8934872101752562006, guid: 8d73061deb9216645a886ab7212b7cfc, type: 3}
 --- !u!136 &955636615
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2323,6 +2327,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357334720}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1411771853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1411771854}
+  m_Layer: 0
+  m_Name: WeaponSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1411771854
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411771853}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.52693355, y: 0, z: 0, w: 0.8499065}
+  m_LocalPosition: {x: 0.216, y: 0.191, z: 0.695}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 955636613}
+  m_LocalEulerAnglesHint: {x: 63.597, y: 0, z: 0}
 --- !u!1 &1447584496
 GameObject:
   m_ObjectHideFlags: 0
@@ -2799,4 +2834,3 @@ SceneRoots:
   - {fileID: 99125086}
   - {fileID: 392379653}
   - {fileID: 1237433316}
-  - {fileID: 349735135}
