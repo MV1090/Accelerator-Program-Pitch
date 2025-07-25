@@ -3,7 +3,12 @@ using UnityEngine;
 
 public class Hunter : Role
 {
-     CameraController cameraController;
+    class weapon 
+    {
+
+    }
+
+    CameraController cameraController;
     void Awake()
     {
         cameraController = Camera.main.GetComponent<CameraController>();

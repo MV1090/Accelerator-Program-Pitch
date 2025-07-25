@@ -1,4 +1,5 @@
 using UnityEngine;
+
 public class Prop : Role
 {     
     CameraController cameraController;
@@ -18,24 +19,46 @@ public class Prop : Role
 
         meshTracker = 0;
     }
-
     Mesh GetPrimitiveMesh(PrimitiveType type)
     {
         GameObject temp = GameObject.CreatePrimitive(type);
         Mesh mesh = temp.GetComponent<MeshFilter>().sharedMesh;
-        Destroy(temp); 
+        Destroy(temp);
         return mesh;
+    }
+
+    void ApplyMeshAndCollider(Mesh mesh)
+    {        
+        MeshFilter targetMeshFilter = GetComponent<MeshFilter>();
+        
+        if (targetMeshFilter != null)
+        {
+            targetMeshFilter.sharedMesh = mesh;
+        }
+       
+        Collider oldCollider = GetComponent<Collider>();
+        if (oldCollider != null)
+            Destroy(oldCollider);
+       
+        if (mesh == props[0])
+            gameObject.AddComponent<CapsuleCollider>();
+        else if (mesh == props[1])
+            gameObject.AddComponent<BoxCollider>();
+        else if (mesh == props[2])
+            gameObject.AddComponent<CapsuleCollider>();
+        else if (mesh == props[3])
+            gameObject.AddComponent<SphereCollider>();
     }
 
     private void Start()
     {
         mf = GetComponent<MeshFilter>();
-
     }
 
     void SetNewMesh(int meshIndex)
     {
-        mf.mesh = props[meshIndex];
+        Mesh newMesh = props[meshIndex];
+        ApplyMeshAndCollider(newMesh);
     }
 
     int CheckMeshIndex()
@@ -53,17 +76,12 @@ public class Prop : Role
     {
         meshTracker ++;
         SetNewMesh(CheckMeshIndex());
-
-        //Logic for swapping prop in one direction goes here
-        Debug.Log("Prop FirstAction");
     }
 
     public override void SecondAction()
     {
         meshTracker --;
-        SetNewMesh(CheckMeshIndex());
-        //Logic for swapping prop in the other direction goes here
-        Debug.Log("Prop SecondAction");
+        SetNewMesh(CheckMeshIndex());          
     }
 
     public override void ThirdAction()
