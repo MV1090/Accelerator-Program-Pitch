@@ -780,6 +780,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentRole: {fileID: 0}
   moveInput: {x: 0, y: 0}
+  jumpForce: 5
   speed: 5
 --- !u!136 &955636615
 CapsuleCollider:
@@ -827,7 +828,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9babba9afe1ea0a46aca2d109327093a, type: 2}
+  - {fileID: 2100000, guid: a606c4c73eed7414096d293febbd9491, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
