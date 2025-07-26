@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        SetRole<Prop>();
+        SetRole<Hunter>();
         rb = GetComponent<Rigidbody>();
     }    
 
@@ -47,7 +47,6 @@ public class Player : MonoBehaviour
     {
         currentRole.ThirdAction();
     }
-
     public void Jump(InputAction.CallbackContext ctx)
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);

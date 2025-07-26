@@ -14,7 +14,8 @@ public class Prop : Role
         "Prefabs/Firework_low",
         "Prefabs/MalletGame_low",
         "Prefabs/Table_low",
-        "Prefabs/Teddy_low"
+        "Prefabs/Teddy_low",
+        "Prefabs/Popcorn_low"
     };
 
     int meshTracker;
