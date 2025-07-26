@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        SetRole<Hunter>();
+        SetRole<Prop>();
         rb = GetComponent<Rigidbody>();
     }    
 

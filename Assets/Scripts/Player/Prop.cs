@@ -4,84 +4,84 @@ public class Prop : Role
 {     
     CameraController cameraController;
     MeshFilter mf;
+            
+    public GameObject[] playerProps;
+    private GameObject currentModel;
 
-    public Mesh[] props;
+    string[] modelAddress =
+    {
+        "Prefabs/Balloon_low",
+        "Prefabs/Firework_low",
+        "Prefabs/MalletGame_low",
+        "Prefabs/Table_low",
+        "Prefabs/Teddy_low"
+    };
+
     int meshTracker;
     void Awake()
     {
         cameraController = Camera.main.GetComponent<CameraController>();
         cameraController.SetCameraMode(CameraController.CameraMode.FirstPerson);
-        props = new Mesh[4];
-        props[0] = GetPrimitiveMesh(PrimitiveType.Cylinder);
-        props[1] = GetPrimitiveMesh(PrimitiveType.Cube);
-        props[2] = GetPrimitiveMesh(PrimitiveType.Capsule);
-        props[3] = GetPrimitiveMesh(PrimitiveType.Sphere);
 
+        LoadModel();
+        ChangeModel(0);
         meshTracker = 0;
     }
-    Mesh GetPrimitiveMesh(PrimitiveType type)
+    
+    private void LoadModel()
     {
-        GameObject temp = GameObject.CreatePrimitive(type);
-        Mesh mesh = temp.GetComponent<MeshFilter>().sharedMesh;
-        Destroy(temp);
-        return mesh;
-    }
+        playerProps = new GameObject[modelAddress.Length];
 
-    void ApplyMeshAndCollider(Mesh mesh)
-    {        
-        MeshFilter targetMeshFilter = GetComponent<MeshFilter>();
-        
-        if (targetMeshFilter != null)
+        for (int i = 0; i < modelAddress.Length; i++) 
         {
-            targetMeshFilter.sharedMesh = mesh;
+            playerProps[i] = Resources.Load<GameObject>(modelAddress[i]);
         }
-       
-        Collider oldCollider = GetComponent<Collider>();
-        if (oldCollider != null)
-            Destroy(oldCollider);
-       
-        if (mesh == props[0])
-            gameObject.AddComponent<CapsuleCollider>();
-        else if (mesh == props[1])
-            gameObject.AddComponent<BoxCollider>();
-        else if (mesh == props[2])
-            gameObject.AddComponent<CapsuleCollider>();
-        else if (mesh == props[3])
-            gameObject.AddComponent<SphereCollider>();
-    }
+    }   
+   
 
     private void Start()
     {
         mf = GetComponent<MeshFilter>();
+        
     }
-
-    void SetNewMesh(int meshIndex)
+    public void ChangeModel(int modelIndex)
     {
-        Mesh newMesh = props[meshIndex];
-        ApplyMeshAndCollider(newMesh);
-    }
+        if (modelIndex < 0 || modelIndex >= playerProps.Length)
+        {
+            Debug.LogWarning("Invalid model index");
+            return;
+        }
+                
+        if (currentModel != null)
+        {
+            Destroy(currentModel);
+        }
+        
+        currentModel = Instantiate(playerProps[modelIndex], transform.position, playerProps[modelIndex].transform.rotation);
+        currentModel.transform.SetParent(transform);  
+    }       
 
     int CheckMeshIndex()
     {
-        if (meshTracker >= props.Length)
+        if (meshTracker >= playerProps.Length)
             meshTracker = 0;
 
         if (meshTracker < 0)
-            meshTracker = props.Length - 1;
+            meshTracker = playerProps.Length - 1;
 
-       return meshTracker;
+        return meshTracker;
     }
 
     public override void FirstAction()
     {
         meshTracker ++;
-        SetNewMesh(CheckMeshIndex());
+        ChangeModel(CheckMeshIndex());
     }
 
     public override void SecondAction()
     {
         meshTracker --;
-        SetNewMesh(CheckMeshIndex());          
+        ChangeModel(CheckMeshIndex());
     }
 
     public override void ThirdAction()
