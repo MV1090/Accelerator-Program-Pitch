@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private Rigidbody rb;    
     public Transform weaponSocket;
     public GameObject weaponInstance;
+        
     public void SetRole<T>() where T : Role
     {
         // Remove old role if it exists
@@ -22,7 +23,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        SetRole<Hunter>();
+        SetRole<Prop>();
         rb = GetComponent<Rigidbody>();
     }    
 
