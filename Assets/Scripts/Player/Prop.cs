@@ -10,14 +10,27 @@ public class Prop : Role
     public GameObject[] playerProps;
     private GameObject currentModel;
 
+    [SerializeField] Collider propCollider;
+
     string[] modelAddress =
     {
-        "Prefabs/Balloon_low",
-        "Prefabs/Firework_low",
-        "Prefabs/MalletGame_low",
-        "Prefabs/Table_low",
-        "Prefabs/Teddy_low",
-        "Prefabs/Popcorn_low"
+        "Prefabs/PlayerProps/Balloon_low",
+        "Prefabs/PlayerProps/Balls",
+        "Prefabs/PlayerProps/Barrell_low",
+        "Prefabs/PlayerProps/Bucket_low",
+        "Prefabs/PlayerProps/CanFall",
+        "Prefabs/PlayerProps/CanStack",
+        "Prefabs/PlayerProps/Crate_low",
+        "Prefabs/PlayerProps/Firework_low",        
+        "Prefabs/PlayerProps/JugglingPin_low",        
+        "Prefabs/PlayerProps/MilkJug_low",
+        "Prefabs/PlayerProps/Popcorn_low",
+        "Prefabs/PlayerProps/SodaCan_low",
+        "Prefabs/PlayerProps/Stool_low",
+        "Prefabs/PlayerProps/Teddy_low",
+        "Prefabs/PlayerProps/TrashBag_low",
+        "Prefabs/PlayerProps/TrashBin_low"
+
     };
 
     int meshTracker;
@@ -25,6 +38,10 @@ public class Prop : Role
     {
         cameraController = Camera.main.GetComponent<CameraController>();
         cameraController.SetCameraMode(CameraController.CameraMode.FirstPerson);
+
+        propCollider = GetComponent<Collider>();
+
+        propCollider.enabled = false;
 
         LoadModel();
         ChangeModel(0);

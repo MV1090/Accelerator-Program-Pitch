@@ -117,7 +117,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6836742943519653291}
-  - component: {fileID: 342230261869963225}
   - component: {fileID: 1618941280150062850}
   m_Layer: 0
   m_Name: Balls
@@ -144,19 +143,6 @@ Transform:
   - {fileID: 3974414336932432495}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &342230261869963225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5334781902886940501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc5664efad198444e9268f19085dd0ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _particleSystem: {fileID: 6563824221846144879, guid: 6be256353530f284195f0046087afa47, type: 3}
 --- !u!65 &1618941280150062850
 BoxCollider:
   m_ObjectHideFlags: 0

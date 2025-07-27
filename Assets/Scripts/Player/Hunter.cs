@@ -8,11 +8,19 @@ public class Hunter : Role
     private GameObject weaponInstance;
 
     Player player;
+
+    [SerializeField] Collider HunterCollider;
+
     void Awake()
     {
         cameraController = Camera.main.GetComponent<CameraController>();
         cameraController.SetCameraMode(CameraController.CameraMode.FirstPerson); 
         player = GetComponent<Player>();
+
+        HunterCollider = GetComponent<Collider>();
+
+        HunterCollider.enabled = true;
+
         SpawnWeapon();
     }
      public void SpawnWeapon()
