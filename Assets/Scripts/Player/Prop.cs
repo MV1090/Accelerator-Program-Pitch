@@ -89,4 +89,9 @@ public class Prop : Role
     {       
        cameraController.ToggleCameraMode();
     }
+
+    public void OnHit()
+    {
+        Debug.Log("Prop Hit");
+    }
 }

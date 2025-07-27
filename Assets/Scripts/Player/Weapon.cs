@@ -38,22 +38,23 @@ public class Weapon : MonoBehaviour
     {
         if (other.TryGetComponent<Prop>(out Prop prop)) 
         {
-        //prop.OnHitByHunter();
-        return;
-        } 
-
-        // else if (other.TryGetComponent<DestructibleProp>(out DestructibleProp destructible)) 
-        // {
-        // destructible.OnSmashed();
-        // return;
-        // }
-
-        Debug.Log("Weapon hit " + other.gameObject.name);
-        if (destructionCount == 0)
-        {
-            Destroy(other.gameObject);
-            destructionCount++;
+            if (destructionCount == 0)
+            {
+                prop.OnHit();
+                destructionCount++;
+                return;
+            }
         }
+
+        else if (other.TryGetComponent<Destructibles>(out Destructibles destructible))
+        {
+            if (destructionCount == 0)
+            {
+                destructible.OnSmashed();
+                destructionCount++;
+                return;
+            }   
+        }               
     }
 
     public IEnumerator RotateObjectCoroutine()
