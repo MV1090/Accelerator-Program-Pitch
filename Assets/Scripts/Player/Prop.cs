@@ -1,7 +1,9 @@
 using UnityEngine;
 
 public class Prop : Role
-{     
+{
+    [SerializeField] ParticleSystem _particleSystem;
+
     CameraController cameraController;
     MeshFilter mf;
             
@@ -92,6 +94,10 @@ public class Prop : Role
 
     public void OnHit()
     {
+        ParticleSystem particleSystem = Instantiate(_particleSystem, gameObject.transform.position, gameObject.transform.rotation);
+        particleSystem.Play();
+                
+        Destroy(gameObject);
         Debug.Log("Prop Hit");
     }
 }
