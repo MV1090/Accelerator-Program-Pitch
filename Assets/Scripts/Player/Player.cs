@@ -1,36 +1,66 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
+
 public class Player : MonoBehaviour
-{   
+{
     public Role currentRole;
     public Vector2 moveInput;
     public float jumpForce = 5f;
     public float speed = 5f;
-    private Rigidbody rb;    
+
+    private Rigidbody rb;
     public Transform weaponSocket;
     public GameObject weaponInstance;
-        
+
+    [Header("Runtime Prop Data List")]
+    public List<PropData> runtimePropList = new List<PropData>(); // Fill this via code or inspector before SetRole<Prop>()
+
     public void SetRole<T>() where T : Role
     {
-        // Remove old role if it exists
         if (currentRole != null)
         {
             Destroy(currentRole);
         }
-        // Add new role as a component
+
         currentRole = gameObject.AddComponent<T>();
+
+        if (currentRole is Prop propRole)
+        {
+            // Assign runtime prop data
+            propRole.InitializeWithProps(runtimePropList.ToArray());
+
+            // Assign the visual parent dynamically
+            Transform visualParent = transform.Find("PropVisual");
+            if (visualParent != null)
+            {
+                propRole.SetVisualParent(visualParent);
+            }
+
+            // Optional: assign Collider and ParticleSystem here too if needed
+            Collider col = GetComponent<Collider>();
+            if (col != null)
+            {
+                propRole.SetCollider(col);
+            }
+        }
     }
 
     void Awake()
     {
-        SetRole<Hunter>();
         rb = GetComponent<Rigidbody>();
-    }    
+
+        // You can populate runtimePropList here, or from another script beforehand
+        // Example (optional): runtimePropList.AddRange(Resources.LoadAll<PropData>("PropDataFolder"));
+
+        SetRole<Prop>();
+    }
 
     public void Move(InputAction.CallbackContext ctx)
     {
         moveInput = ctx.ReadValue<Vector2>();
-    }    
+    }
+
     public void StopMove(InputAction.CallbackContext ctx)
     {
         moveInput = Vector2.zero;
@@ -38,20 +68,24 @@ public class Player : MonoBehaviour
 
     public void FirstAction(InputAction.CallbackContext ctx)
     {
-        currentRole.FirstAction();
+        currentRole?.FirstAction();
     }
+
     public void SecondAction(InputAction.CallbackContext ctx)
     {
-        currentRole.SecondAction();
+        currentRole?.SecondAction();
     }
+
     public void ThirdAction(InputAction.CallbackContext ctx)
     {
-        currentRole.ThirdAction();
+        currentRole?.ThirdAction();
     }
+
     public void Jump(InputAction.CallbackContext ctx)
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
+
     void FixedUpdate()
     {
         Vector3 forward = Camera.main.transform.forward;

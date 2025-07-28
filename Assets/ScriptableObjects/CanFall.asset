@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b66de426b80af14f9607acf6bacf311, type: 3}
+  m_Name: CanFall
+  m_EditorClassIdentifier: 
+  propName: CanFall
+  propPrefab: {fileID: 5890100949974221482, guid: 1049c82ad270b2a45940998147e462c8, type: 3}
+  moveSpeed: 2
+  jumpHeight: 1
+  deathSound: {fileID: 0}

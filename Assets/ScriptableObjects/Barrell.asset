@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b66de426b80af14f9607acf6bacf311, type: 3}
+  m_Name: Barrell
+  m_EditorClassIdentifier: 
+  propName: Barrell
+  propPrefab: {fileID: 5196462285815302147, guid: 5c32cd505b611d448b2484190b53f559, type: 3}
+  moveSpeed: 2
+  jumpHeight: 1
+  deathSound: {fileID: 0}
