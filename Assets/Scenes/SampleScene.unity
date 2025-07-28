@@ -3633,6 +3633,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1761355232}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &896341233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6120560639394365072, guid: 91df1692992ce3c499f055b30e17c351, type: 3}
+  m_PrefabInstance: {fileID: 1544851761}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &896341238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896341233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2d1962e461ebf948ba821cc91c325fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pin: {fileID: 2025537125}
 --- !u!1 &900609893
 GameObject:
   m_ObjectHideFlags: 0
@@ -5608,10 +5626,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: MalletGame_low (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8316414996912579946, guid: 91df1692992ce3c499f055b30e17c351, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6120560639394365072, guid: 91df1692992ce3c499f055b30e17c351, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 896341238}
   m_SourcePrefab: {fileID: 100100000, guid: 91df1692992ce3c499f055b30e17c351, type: 3}
 --- !u!4 &1544851762 stripped
 Transform:
@@ -7193,6 +7218,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1143406312430734040, guid: 5aff7fa4a25edf34886540d6ea58bf09, type: 3}
   m_PrefabInstance: {fileID: 1999967274}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2025537125 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5040751576471014550, guid: 91df1692992ce3c499f055b30e17c351, type: 3}
+  m_PrefabInstance: {fileID: 1544851761}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2036197322
 PrefabInstance:
