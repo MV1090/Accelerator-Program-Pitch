@@ -14,13 +14,15 @@ public class Prop : Role
 
     string[] modelAddress =
     {
+        
+        "Prefabs/PlayerProps/Barrell_low",
+        "Prefabs/PlayerProps/TrashBin_low",
         "Prefabs/PlayerProps/Balloon_low",
         "Prefabs/PlayerProps/Balls",
-        "Prefabs/PlayerProps/Barrell_low",
+        "Prefabs/PlayerProps/Crate_low",
         "Prefabs/PlayerProps/Bucket_low",
         "Prefabs/PlayerProps/CanFall",
-        "Prefabs/PlayerProps/CanStack",
-        "Prefabs/PlayerProps/Crate_low",
+        "Prefabs/PlayerProps/CanStack",        
         "Prefabs/PlayerProps/Firework_low",        
         "Prefabs/PlayerProps/JugglingPin_low",        
         "Prefabs/PlayerProps/MilkJug_low",
@@ -28,9 +30,7 @@ public class Prop : Role
         "Prefabs/PlayerProps/SodaCan_low",
         "Prefabs/PlayerProps/Stool_low",
         "Prefabs/PlayerProps/Teddy_low",
-        "Prefabs/PlayerProps/TrashBag_low",
-        "Prefabs/PlayerProps/TrashBin_low"
-
+        "Prefabs/PlayerProps/TrashBag_low"
     };
 
     int meshTracker;
